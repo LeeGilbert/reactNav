@@ -14,6 +14,11 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { MoreStuff } from './MoreStuff';
 
 function App() {
+
+  const toggleMenu = () => {
+
+  }
+
   const data = [
     { path: '/',
       title: 'Home',
@@ -27,16 +32,18 @@ function App() {
       title: 'More',
       desc: 'More Stuff'
      }];
+  
   const sideMenu = () => (
     <ListGroup>
       {data.map((route, index) => (
         <LinkContainer to={route.path} key={index}  >
-          <ListGroupItem  onClick={() => this.toggleMenu()} header={route.title}>{route.desc}</ListGroupItem>
+          <ListGroupItem  onClick={() => toggleMenu()} header={route.title}>{route.desc}</ListGroupItem>
         </LinkContainer>
       ))}
     </ListGroup>
   )
  
+
   return (
     <React.Fragment>
       <Router>
