@@ -6,7 +6,8 @@ const Wrapper = styled.div`
     vertical-align: top;
     height: 24px;
     width: 24px;
-    min-width: 40px;
+    min-width: 26px;
+    max-height: 26px;
     border-radius: 50%;
     display: inline-block;
     margin: 0 4px;

@@ -24,6 +24,6 @@ function Sidebar2 ({ width, height, children }) {
       </div>
     </React.Fragment>
   );
-};
+}
 
 export default Sidebar2;
