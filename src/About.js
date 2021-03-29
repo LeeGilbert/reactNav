@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+const Heading = styled.div`
+  margin-top: 1em;
+  margin-left: 6em;
+  margin-right: 6em;
+`; 
 const GridWrapper = styled.div`
   display: grid;
   grid-gap: 10px;
@@ -11,8 +16,10 @@ const GridWrapper = styled.div`
 `; 
 export const About = () => (
   <GridWrapper>
-    <h2>About Page</h2>
-    <p>State at ceiling lay on arms while you're using the keyboard so this human feeds me.</p>
+    <Heading>
+    <h2 className="text">About Page</h2>
+    </Heading>
+    <p>Stare at ceiling lay on arms while you're using the keyboard so this human feeds me.</p>
     <p>I am a kitty cat, sup, feed me, no cares in the world</p>
     <p>Meow meow, I tell my human purr for no reason but to chase after</p>
   </GridWrapper>

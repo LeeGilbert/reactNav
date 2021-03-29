@@ -1,0 +1,11 @@
+.svgicon {
+    display: inline-flex;
+    align-self: center;
+    position: relative;
+    height: 1em;
+    width: 1em;
+}
+.svgicon svg, .svgicon img {
+    height: 1em;
+    width: 1em;
+}

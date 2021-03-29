@@ -1,7 +1,7 @@
-import "./Sidebar2.css";
+import "./Sidebar3.css";
 import React from "react";
 
-function Sidebar2 ({ width, height, children }) {
+function Sidebar3 ({ width, height, children }) {
   const [xPosition, setX] = React.useState(-width);
   
   const toggleMenu = () => {
@@ -26,4 +26,4 @@ function Sidebar2 ({ width, height, children }) {
   );
 };
 
-export default Sidebar2;
+export default Sidebar3;

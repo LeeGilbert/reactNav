@@ -1,9 +1,6 @@
 .side-bar {
     position: absolute;
-    top: 60px;
-    left: 0;
-    width: 70%;
-    max-width: 400px;
+    top: 0;
     height: 100% !important;
     display: flex;
     flex-direction: column;
@@ -12,6 +9,5 @@
     border-color: rgba(64, 194, 133, 0.693);
     background-color: rgb(255, 255, 255);
     transition: 0.8s ease;
-    z-index: 201;
-    box-shadow: 2px 0px 5px rgb(0, 0, 0, 0.5);
+    z-index: 101;
 }

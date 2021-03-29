@@ -1,67 +1,85 @@
 import React from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter,  Route } from "react-router-dom";
 import { NavigationBar } from './components/NavigationBar';
 import { Home } from './Home';
 import { About } from './About';
 import { NoMatch } from './NoMatch';
 import Sidebar2 from './components/Sidebar2';
-import { ListGroup } from 'react-bootstrap';
-import { ListGroupItem } from 'react-bootstrap';
+import { ListGroup,ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { MoreStuff } from './MoreStuff';
+import { Xtra } from './Xtra';
+import Backdrop from './components/Backdrop';
 
-function App() {
+class App extends React.Component {
+  state = {
+    sideBarOpen: false
+  };
 
-  const toggleMenu = () => {
+  toggleSideBar = () => {
+    this.setState(
+      (prevState) => {
+        return {sideBarOpen: !prevState.sideBarOpen};
+      }
+    );
+  };
 
+  backdropClickHandler = () => {
+    this.setState({sideBarOpen: false});
   }
 
-  const data = [
-    { path: '/',
-      title: 'Home',
-      desc: 'Home Page'
-    },
+  data = [
     { path: '/about',
     title: 'About',
-    desc: 'Basic Stuff'
+    desc: 'About Stuff'
     },
     { path: '/more',
       title: 'More',
       desc: 'More Stuff'
-     }];
+     },
+     { path: '/xtra',
+     title: 'Xtra',
+     desc: 'Xtra Page'
+   }];
   
-  const sideMenu = () => (
+
+  render() {
+    let sidebar;
+    let backdrop;
+    if (this.state.sideBarOpen) {
+      sidebar =  <Sidebar2 width={300} height={"100%"}> {this.sideMenu()} </Sidebar2>;
+      backdrop = <Backdrop click={this.backdropClickHandler}/>;
+    }
+   return (
+    <React.Fragment>
+      <NavigationBar btnClickHandler={this.toggleSideBar}/>
+      <HashRouter>
+          <Route path="/" component={Home}>
+          <Route id="1" path="/about" component={About} />
+          <Route id="2" path="/more" component={MoreStuff} />
+          <Route id="3" path="/xtra" component={Xtra} />
+         
+        </Route>
+       {backdrop}
+       {sidebar}
+      </HashRouter>
+
+    </React.Fragment>
+  );
+  }
+
+  sideMenu = () => (
     <ListGroup>
-      {data.map((route, index) => (
-        <LinkContainer to={route.path} key={index}  >
-          <ListGroupItem  onClick={() => toggleMenu()} header={route.title}>{route.desc}</ListGroupItem>
+      {this.data.map((route, index) => (
+        <LinkContainer to={route.path} key={index}  >        
+          <ListGroupItem  onClick={() => this.toggleSideBar()} header={route.title}>{route.desc}</ListGroupItem>
         </LinkContainer>
       ))}
     </ListGroup>
-  )
- 
-
-  return (
-    <React.Fragment>
-      <Router>
-        <NavigationBar />
-
-        <Sidebar2 width={300} height={"100vh"}>
-        {sideMenu()}
-        </Sidebar2>
-
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/more" component={MoreStuff} />
-          <Route component={NoMatch} />
-        </Switch>
-      </Router>
-    </React.Fragment>
   );
-}
 
+}
 export default App;
